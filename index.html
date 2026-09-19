@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NEWT — Music archive</title>
+    <meta name="description" content="NEWT — a non-commercial site about music: albums, genres, artists and labels." />
+    <link rel="preload" href="/fonts/Helvetica-Bold.otf" as="font" type="font/otf" crossorigin />
+    <link rel="preload" href="/fonts/Helvetica-Regular.otf" as="font" type="font/otf" crossorigin />
+    <script type="module" src="/src/main.js"></script>
+  </head>
+  <body>
+    <div class="ticker" aria-label="Site news">
+      <div class="ticker__track"></div>
+    </div>
+
+    <div class="rail" aria-hidden="true"></div>
+
+    <nav class="menu" id="menu" aria-label="Main">
+      <a class="menu__logo" href="./">NEWT</a>
+      <button class="menu__toggle" type="button" aria-expanded="false" aria-controls="menu-list" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
+      <div class="menu__rule"></div>
+      <ul class="menu__list" id="menu-list">
+        <li><a href="#archive">[ARCHIVE]</a></li>
+        <li><a href="#genres">[GENRES]</a></li>
+        <li><a href="#artists">[ARTISTS]</a></li>
+        <li><a href="#labels">[LABELS]</a></li>
+        <li><a href="#contacts">[CONTACTS]</a></li>
+      </ul>
+    </nav>
+
+    <main>
+      <!-- 1 · Hero: three release screens that slide horizontally -->
+      <div class="stage" id="stage-hero">
+        <section class="panel hero" id="hero">
+          <div class="screen screen--1">
+            <div class="player" data-src="/audio/gardens-for-tired-machines.m4a">
+              <img class="player__thumb" src="/img/hero/1-thumb.png" alt="" />
+              <div class="player__info">
+                <span class="player__artist body-xs">Halogen Moths</span>
+                <span class="player__title">Gardens for Tired Machines</span>
+                <span class="player__time body-xs">00:00:34</span>
+              </div>
+              <button class="player__play" type="button" aria-label="Play: Halogen Moths – Gardens for Tired Machines">
+                <svg class="icon-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0.5 9.5 5 1 9.5z" fill="currentColor" /></svg>
+                <svg class="icon-pause" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 1h2.6v8H1.5zM5.9 1h2.6v8H5.9z" fill="currentColor" /></svg>
+              </button>
+            </div>
+            <div class="release">
+              <dl class="release__meta">
+                <div><dt>artist + title</dt><dd>Halogen Moths</dd></div>
+                <div><dt>genre</dt><dd>Experimental</dd></div>
+                <div><dt>year</dt><dd>2018</dd></div>
+              </dl>
+              <h1 class="release__title h1">Gardens for<br />tired machines</h1>
+            </div>
+          </div>
+
+          <div class="screen screen--2">
+            <div class="player" data-src="/audio/slow-blood.m4a">
+              <img class="player__thumb" src="/img/hero/2-thumb.png" alt="" />
+              <div class="player__info">
+                <span class="player__artist body-xs">Marrow Choir</span>
+                <span class="player__title">Slow Blood</span>
+                <span class="player__time body-xs">00:00:36</span>
+              </div>
+              <button class="player__play" type="button" aria-label="Play: Marrow Choir – Slow Blood">
+                <svg class="icon-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0.5 9.5 5 1 9.5z" fill="currentColor" /></svg>
+                <svg class="icon-pause" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 1h2.6v8H1.5zM5.9 1h2.6v8H5.9z" fill="currentColor" /></svg>
+              </button>
+            </div>
+            <div class="release">
+              <dl class="release__meta">
+                <div><dt>artist + title</dt><dd>Marrow Choir</dd></div>
+                <div><dt>genre</dt><dd>Ambient</dd></div>
+                <div><dt>year</dt><dd>2023</dd></div>
+              </dl>
+              <h2 class="release__title h1">Marrow Choir&nbsp;–<br />Slow Blood</h2>
+            </div>
+          </div>
+
+          <div class="screen screen--3">
+            <div class="player" data-src="/audio/coil-season.m4a">
+              <img class="player__thumb" src="/img/hero/3-thumb.png" alt="" />
+              <div class="player__info">
+                <span class="player__artist body-xs">Kiln Saints</span>
+                <span class="player__title">Coil Season</span>
+                <span class="player__time body-xs">00:00:30</span>
+              </div>
+              <button class="player__play" type="button" aria-label="Play: Kiln Saints – Coil Season">
+                <svg class="icon-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0.5 9.5 5 1 9.5z" fill="currentColor" /></svg>
+                <svg class="icon-pause" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 1h2.6v8H1.5zM5.9 1h2.6v8H5.9z" fill="currentColor" /></svg>
+              </button>
+            </div>
+            <div class="release">
+              <dl class="release__meta">
+                <div><dt>artist + title</dt><dd>Kiln Saints</dd></div>
+                <div><dt>genre</dt><dd>Industrial</dd></div>
+                <div><dt>year</dt><dd>2008</dd></div>
+              </dl>
+              <h2 class="release__title h1">Kiln Saints&nbsp;–<br />Coil Season</h2>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 2 · Soundtrack for the day -->
+      <div class="stage" id="stage-soundtrack">
+        <section class="panel s2" id="soundtrack">
+         <div class="s2__inner">
+          <h2 class="sd-title" aria-label="Soundtrack for the day">
+            <div class="sd-row sd-row--1" aria-hidden="true">
+              <span>S</span><span>O</span><span>U</span><span>N</span><span>D</span><span>T</span><span>R</span><span>A</span><span>C</span><span>K</span>
+            </div>
+            <div class="sd-row sd-row--2" aria-hidden="true">
+              <span>FOR</span>
+              <span class="sd-the">THE
+                <span class="sd-date"><span>DAY</span><span>NOVEMBER 10</span></span>
+              </span>
+              <span class="sd-day">
+                <svg class="sd-arrow" viewBox="0 0 66 84" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M33 4c-2 20 1 38-1 60" />
+                  <path d="M9 47c9 10 17 20 23 33 8-14 17-26 27-37" />
+                  <path d="M20 66c9 3 18 6 26 14" />
+                </svg>
+                <span>DAY</span>
+              </span>
+            </div>
+          </h2>
+          <div class="sd-body">
+            <img class="sd-cover" src="/img/soundtrack/cover.png" alt="Cover art of the soundtrack of the day" />
+            <div class="sd-copy">
+              <p class="body-medium">The quality of melodies that Varg Vikernes can write, is inversely proportional to his beliefs and lifestyle. Under the 'new' moniker, the first track of his new album.</p>
+              <a class="explore" href="#archive">Explore
+                <svg viewBox="0 0 22 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M1 7.5c6-1 13-1 19-.5M14 1.5c2.5 2 4.5 4 6 5.5-2 2-4 4-6.5 5.5" />
+                </svg>
+              </a>
+            </div>
+          </div>
+         </div>
+        </section>
+      </div>
+
+      <!-- 3 · Previous albums (horizontal cards) -->
+      <div class="stage" id="stage-albums">
+        <section class="panel s3" id="albums">
+          <h2 class="s3__title h2">Previous albums</h2>
+          <div class="cards">
+            <article class="card"><div class="card__img"><img src="/img/albums/1.png" alt="" /></div><p class="card__artist">Paper Lung</p><h3 class="card__title">Vowel Season</h3></article>
+            <article class="card"><div class="card__img"><img src="/img/albums/2.png" alt="" /></div><p class="card__artist">Ninth Tide Assembly</p><h3 class="card__title">The Gilded Nowhere</h3></article>
+            <article class="card"><div class="card__img"><img src="/img/albums/3.png" alt="" /></div><p class="card__artist">Cold Laundry</p><h3 class="card__title">Spin Cycle Hymns</h3></article>
+            <article class="card"><div class="card__img"><img src="/img/albums/4.png" alt="" /></div><p class="card__artist">Rusted Alphabet</p><h3 class="card__title">Scaffold Lullabies</h3></article>
+            <article class="card"><div class="card__img"><img src="/img/albums/5.png" alt="" /></div><p class="card__artist">Northern Static</p><h3 class="card__title">Rain in the Lead Room</h3></article>
+            <article class="card"><div class="card__img"><img src="/img/albums/6.png" alt="" /></div><p class="card__artist">Glacier Circuit</p><h3 class="card__title">Small Immensities</h3></article>
+            <article class="card"><div class="card__img"><img src="/img/albums/7.png" alt="" /></div><p class="card__artist">Lantern Assembly</p><h3 class="card__title">Hold the Room</h3></article>
+          </div>
+        </section>
+      </div>
+
+      <!-- 4 · Video (background stays fixed while the text scrolls over it) -->
+      <div class="stage" id="stage-video">
+        <section class="panel s4" id="video">
+          <div class="s4__video">
+            <video poster="/img/video/poster.png" muted loop playsinline preload="auto" disablepictureinpicture>
+              <source src="/video/batterie-fragile.mp4" type="video/mp4" />
+            </video>
+          </div>
+          <div class="s4__text">
+            <h2 class="s4__title h2" data-split>Valentina Magaletti – Batterie Fragile</h2>
+            <p class="s4__lead h2" data-split>An important work in the career of one of the best drummers and composers of his time</p>
+            <!-- Shown on tablet and mobile only -->
+            <div class="player player--inline" data-src="/audio/batterie-fragile.m4a">
+              <img class="player__thumb" src="/img/video/thumb.png" alt="" />
+              <div class="player__info">
+                <span class="player__artist body-xs">Valentina Magaletti</span>
+                <span class="player__title">Batterie Fragile</span>
+                <span class="player__time body-xs">00:00:32</span>
+              </div>
+              <button class="player__play" type="button" aria-label="Play: Valentina Magaletti – Batterie Fragile">
+                <svg class="icon-play" viewBox="0 0 10 10" aria-hidden="true"><path d="M1 0.5 9.5 5 1 9.5z" fill="currentColor" /></svg>
+                <svg class="icon-pause" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 1h2.6v8H1.5zM5.9 1h2.6v8H5.9z" fill="currentColor" /></svg>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- 5 · Albums of the week -->
+      <div class="stage" id="stage-week">
+        <section class="panel s5" id="week" aria-label="Albums of the week">
+          <div class="wk-row" aria-hidden="true">
+            <span class="wk-word">Albums</span>
+            <figure class="wk-fig"><div class="wk-clip"><img class="wk-fig__img" src="/img/week/1-water-damage.png" alt="" /></div><figcaption>Basement Choir<b>Water Damage</b></figcaption></figure>
+            <span class="wk-word">of</span>
+            <figure class="wk-fig"><div class="wk-clip"><img class="wk-fig__img" src="/img/week/2-pink-territory.png" alt="" /></div><figcaption>Static Weather<b>Pink Territory – 24</b></figcaption></figure>
+          </div>
+          <div class="wk-row" aria-hidden="true">
+            <span class="wk-word">The</span>
+            <figure class="wk-fig"><div class="wk-clip"><img class="wk-fig__img" src="/img/week/3-darkening-order.png" alt="" /></div><figcaption>Mothlight<b>Darkening Order</b></figcaption></figure>
+            <span class="wk-word">Week</span>
+            <figure class="wk-fig"><div class="wk-clip"><img class="wk-fig__img" src="/img/week/4-hymn.png" alt="" /></div><figcaption>Vale &amp; Pyre<b>The Hymn of the Seventh Silence</b></figcaption></figure>
+          </div>
+        </section>
+      </div>
+
+      <!-- 6 · Subscribe -->
+      <div class="stage" id="stage-subscribe">
+        <section class="panel s6" id="subscribe">
+          <div class="s6__media" aria-hidden="true">
+            <div class="s6__zoom"><img src="/img/subscribe/balloon.png" alt="" /></div>
+          </div>
+
+          <div class="s6__col">
+            <h2 class="s6__title h2" data-fade>Find out first</h2>
+            <h2 class="s6__thanks h2" role="status">Thanks!<br />We’ll get<br />back to you<br />soon.</h2>
+            <p class="s6__text body-s" data-fade>Subscribe and be the first to hear about exclusive tracks, news and offers.</p>
+            <form class="form" id="subscribe-form" novalidate data-fade>
+              <input class="field" type="text" name="name" placeholder="Name" autocomplete="given-name" required />
+              <input class="field" type="email" name="email" placeholder="Your email address" autocomplete="email" required />
+              <button class="btn" type="submit">Subscribe</button>
+              <p class="form__error" role="alert"></p>
+            </form>
+          </div>
+
+          <div class="chat" data-fade>
+            <span class="chat__label">• Live chat</span>
+            <a class="chat__mail" href="mailto:hellonewt@gmail.com">hellonewt<wbr />@gmail.com</a>
+          </div>
+          <p class="s6__note body-s" data-fade>This project is non-commercial and all rights belong to the owners</p>
+        </section>
+      </div>
+    </main>
+
+    <!-- Welcome pop-up -->
+    <div class="popup" id="popup" role="dialog" aria-modal="true" aria-labelledby="popup-title" aria-hidden="true">
+      <div class="popup__card">
+        <button class="popup__close" type="button" aria-label="Close">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2" aria-hidden="true"><path d="M1 1l22 22M23 1 1 23" /></svg>
+        </button>
+        <h2 class="popup__title" id="popup-title">Welcome to the world<br />of extraordinary music!</h2>
+        <p class="popup__text">Explore unique genres and discover sounds that inspire and surprise. Every composition here is a little journey beyond the usual.</p>
+        <a class="popup__cta" href="#archive">Go to archive</a>
+      </div>
+    </div>
+  </body>
+</html>

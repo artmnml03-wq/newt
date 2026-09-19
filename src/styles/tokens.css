@@ -1,0 +1,81 @@
+/* Design tokens — source: ui-kit.png */
+
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Helvetica";
+  src: url("/fonts/Helvetica-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* Colors */
+  --white: #fcfcfa;
+  --white-30: rgb(252 252 250 / 0.3);
+  --light-gray: #dedede;
+  --gray: #c1c1bd;
+  --graphite: #808080;
+  --red: #e71d1d;
+  --black: #121212;
+
+  /* Backgrounds sampled from the assets */
+  --hero-1-bg: #120ae4;
+  --hero-2-bg: #e2e7e7;
+  --surface: #ececec; /* subscribe section */
+
+  /* Typography — Desktop / Tablet */
+  --font: "Helvetica", "Helvetica Neue", Arial, sans-serif;
+
+  --h1-size: 6.25rem;
+  --h1-spacing: -0.05em;
+  --h2-size: 4rem;
+  --h2-spacing: -0.03em;
+  /* Oversized headline used in "Soundtrack for the day" and "Albums of the week"
+     (measured on the mockups; not in the UI kit) */
+  --display-size: 7.5rem; /* "Soundtrack for the day" */
+  --week-size: var(--display-size); /* "Albums of the week" */
+  --display-spacing: -0.05em;
+  --body-medium-size: 1.25rem;
+  --body-s-size: 1rem;
+  --caption-size: 0.875rem;
+  --body-xs-size: 0.75rem;
+
+  /* Layout (measured on the 1440×800 references) */
+  --ticker-h: 2.75rem;
+  --sec-h: calc(100vh - var(--ticker-h)); /* one screen under the ticker */
+  --edge: 1.875rem; /* left gap to the menu card, and its top gap under the ticker */
+  --text-x: 16.75rem; /* left edge of text blocks (content-x + optical offset) */
+  --nav-w: 11.4375rem;
+  --rail-x: 15.125rem; /* vertical divider line */
+  --content-x: 16.4375rem; /* content left edge, right of the divider */
+  --radius: 0.25rem;
+  --line: rgb(128 128 128 / 0.3);
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  :root {
+    --h1-size: 3.25rem;
+    --h1-spacing: -0.03em;
+    --h2-size: 2.75rem;
+    --h2-spacing: 0em;
+    --body-medium-size: 1rem;
+    --body-s-size: 0.875rem;
+    --caption-size: 0.75rem;
+    --body-xs-size: 0.75rem;
+  }
+}

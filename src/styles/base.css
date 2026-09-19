@@ -1,0 +1,118 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  font-size: 16px;
+}
+
+/* Desktop: the whole composition scales with the window. All sizes are in rem,
+   and 1rem = 16px on the 1440×800 mockup. The scale follows the width, but is
+   limited by the height so nothing is cut off in a short window. */
+@media (min-width: 1024px) {
+  html {
+    font-size: clamp(11px, min(100vw / 90, 100vh / 50), 32px);
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--white);
+  color: var(--black);
+  font-family: var(--font);
+  font-size: var(--body-s-size);
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+main {
+  padding-top: var(--ticker-h);
+}
+
+/* Hover flicker (as on blimp.gr): used for the card corner marks, the menu
+   links and "Explore". Only where a pointer can hover and motion is allowed. */
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+:root {
+  --blink-link: blink 51ms linear infinite;
+}
+
+/* Each section is a "stage": a tall wrapper whose panel sticks while the next
+   stage scrolls over it. Heights and sticky offsets are set in js/stages.js. */
+.stage {
+  position: relative;
+}
+.panel {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Type styles from the UI kit */
+.h1 {
+  font-size: var(--h1-size);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--h1-spacing);
+  text-transform: uppercase;
+}
+.h2 {
+  font-size: var(--h2-size);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--h2-spacing);
+  text-transform: uppercase;
+}
+.body-medium {
+  font-size: var(--body-medium-size);
+  font-weight: 700;
+  line-height: 1.2;
+}
+.body-s {
+  font-size: var(--body-s-size);
+  font-weight: 400;
+  line-height: 1;
+}
+.caption {
+  font-size: var(--caption-size);
+  font-weight: 700;
+  line-height: normal;
+}
+.body-xs {
+  font-size: var(--body-xs-size);
+  font-weight: 400;
+  line-height: 1;
+}

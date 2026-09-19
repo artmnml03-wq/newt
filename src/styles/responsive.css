@@ -1,0 +1,359 @@
+/* Tablet and mobile layouts.
+   ≤ 1023px  tablet + mobile: no ticker or rail, a top bar with the menu,
+             one column, fixed sizes (root font 16px, the desktop type scale)
+   ≤ 767px   mobile: burger menu, the mobile type scale from the UI kit */
+
+@media (min-width: 1024px) {
+  /* The inline player of the video section exists for tablet and mobile only */
+  .player--inline {
+    display: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  :root {
+    --ticker-h: 5rem; /* height of the top bar */
+    --gutter: 1.875rem;
+    --edge: var(--gutter);
+    --content-x: var(--gutter);
+    --text-x: var(--gutter);
+    --sec-h: calc(100vh - var(--ticker-h));
+    --display-size: 6rem;
+    --week-size: 7.5rem;
+  }
+  @supports (height: 100svh) {
+    :root {
+      --sec-h: calc(100svh - var(--ticker-h));
+    }
+  }
+
+  .ticker,
+  .rail {
+    display: none;
+  }
+
+  /* ───── Top bar ───── */
+  .menu {
+    top: 0;
+    left: 0;
+    right: 0;
+    width: auto;
+    height: var(--ticker-h);
+    padding: 0 var(--gutter);
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .menu__logo {
+    font-size: 3rem;
+    line-height: 1;
+  }
+  .menu__rule {
+    display: none;
+  }
+  .menu__toggle {
+    display: none;
+  }
+  .menu__list {
+    display: flex;
+    gap: 2.5rem;
+    line-height: 1.5rem;
+  }
+
+  /* ───── 1 · Hero ───── */
+  .release {
+    bottom: 3.75rem;
+  }
+  .release__title {
+    max-width: none;
+    overflow-wrap: anywhere;
+  }
+  /* The fox picture is cut at its bottom edge, so it is aligned to the bottom
+     of the screen: the cut hides behind the headline instead of showing as a seam. */
+  .screen--1 {
+    background-size: auto 88%;
+    background-position: 72% 100%;
+  }
+  .screen--2 {
+    background-size: auto 58%;
+    background-position: 90% 3%;
+  }
+  .screen--3 {
+    background-size: cover;
+    background-position: 62% top;
+  }
+
+  /* ───── 2 · Soundtrack for the day ───── */
+  .s2__inner {
+    padding: 2.5rem var(--gutter) 3.75rem;
+  }
+  .sd-title {
+    line-height: 0.86;
+  }
+  .sd-day {
+    gap: 0.43em;
+  }
+  .sd-arrow {
+    width: 0.55em;
+    height: 0.7em;
+    margin-top: 0.05em;
+  }
+  .sd-date {
+    top: calc(100% + 1.25rem);
+  }
+  .sd-body {
+    grid-template-columns: 1fr;
+    row-gap: 1.75rem;
+    margin-top: 5.5rem;
+  }
+  .sd-cover {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1.36;
+  }
+  .sd-copy {
+    max-width: 26rem;
+    padding-bottom: 0;
+  }
+
+  /* ───── 3 · Previous albums ───── */
+  .s3__title {
+    top: 4rem;
+    margin-left: 0;
+  }
+  .cards {
+    top: 36%;
+  }
+
+  /* ───── 4 · Video ───── */
+  .s4__text {
+    top: 40%;
+    right: var(--gutter);
+    max-width: none;
+    margin-left: 0;
+  }
+  .player--inline {
+    position: relative;
+    top: auto;
+    left: auto;
+    display: flex;
+    margin-top: 2.5rem;
+    max-width: 100%;
+  }
+
+  /* ───── 5 · Albums of the week ───── */
+  /* One flowing headline: the words and covers wrap like text. There is no
+     right padding, so the gap after the last cover of a line does not push it
+     onto the next line. */
+  .s5 {
+    --wk-fig-w: 8.5rem;
+    --wk-fig-h: 6.125rem;
+    --wk-gap: 1.875rem;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: center;
+    row-gap: 0.8rem;
+    padding: 5rem 0 0 var(--gutter);
+  }
+  .wk-row {
+    display: contents;
+  }
+  .wk-word {
+    margin-right: 0.1em;
+  }
+
+  /* ───── 6 · Subscribe ───── */
+  .s6 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 0 var(--gutter) 1.875rem;
+  }
+  /* The picture takes all the space above the form and sits in its top-right
+     corner at the size of the mockup; a shorter screen crops its lower part. */
+  .s6__media {
+    position: relative;
+    inset: auto;
+    flex: 1 1 0;
+    min-height: 12rem;
+    margin: 0 calc(-1 * var(--gutter)) 3rem;
+  }
+  .s6__col {
+    position: static;
+    width: 100%;
+  }
+  .s6__title {
+    width: auto;
+    margin-left: 0;
+  }
+  .s6__text {
+    max-width: none;
+  }
+  .s6__thanks {
+    margin-left: 0;
+  }
+  .chat {
+    top: var(--gutter);
+    bottom: auto;
+    left: var(--gutter);
+  }
+  .s6__note {
+    position: static;
+    max-width: 21.25rem;
+    margin-top: 2.5rem;
+    text-align: left;
+  }
+}
+
+/* ───────── Mobile ───────── */
+@media (max-width: 767px) {
+  :root {
+    --ticker-h: 3.75rem;
+    --gutter: 1.25rem;
+    --display-size: 3rem;
+    --week-size: 3rem;
+  }
+
+  .menu__logo {
+    font-size: 1.75rem;
+  }
+
+  /* Burger */
+  .menu__toggle {
+    display: grid;
+    align-content: center;
+    gap: 0.3125rem;
+    width: 1.75rem;
+    height: 1.75rem;
+    padding: 0;
+    color: var(--white);
+  }
+  .menu__toggle span {
+    display: block;
+    height: 2px;
+    background: currentColor;
+    transition: transform 0.25s ease, opacity 0.2s ease;
+  }
+  .menu.is-open .menu__toggle span:nth-child(1) {
+    transform: translateY(0.4375rem) rotate(45deg);
+  }
+  .menu.is-open .menu__toggle span:nth-child(2) {
+    opacity: 0;
+  }
+  .menu.is-open .menu__toggle span:nth-child(3) {
+    transform: translateY(-0.4375rem) rotate(-45deg);
+  }
+
+  /* The links open as a red panel under the bar */
+  .menu__list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    display: none;
+    gap: 0;
+    padding: 1.25rem 0 1.5rem;
+    background: var(--red);
+    border-radius: 0 0 0.75rem 0.75rem;
+    text-align: center;
+    font-size: var(--body-s-size);
+    font-weight: 700;
+    line-height: 2.4375rem;
+  }
+  .menu.is-open .menu__list {
+    display: grid;
+  }
+
+  /* ───── 1 · Hero ───── */
+  .player {
+    width: calc(100% - 2 * var(--gutter));
+  }
+  .player--inline {
+    width: 100%;
+  }
+  .release {
+    bottom: 2.375rem;
+  }
+  .screen--1 {
+    background-size: auto 78%;
+    background-position: 55% 100%;
+  }
+  .screen--2 {
+    background-size: auto 50%;
+    background-position: 88% 5%;
+  }
+  .screen--3 {
+    background-size: auto 100%;
+    background-position: 58% top;
+  }
+
+  /* ───── 2 · Soundtrack for the day ───── */
+  .s2__inner {
+    padding-top: 2.5rem;
+  }
+  .sd-body {
+    margin-top: 4.75rem;
+  }
+  .sd-cover {
+    aspect-ratio: 1;
+  }
+
+  /* ───── 3 · Previous albums ───── */
+  .s3__title {
+    top: 2.75rem;
+  }
+  .cards {
+    top: 30%;
+    gap: 1.25rem;
+  }
+  .card,
+  .card__img {
+    width: 14.5rem;
+  }
+  .card__img {
+    height: 14.3125rem;
+  }
+  .card__artist {
+    margin-top: 1.5rem;
+  }
+
+  /* ───── 5 · Albums of the week ───── */
+  .s5 {
+    --wk-fig-w: 5rem;
+    --wk-fig-h: 3.625rem;
+    --wk-gap: 0.75rem;
+    row-gap: 1.875rem;
+    padding: 0 0 8rem var(--gutter);
+  }
+  .wk-word {
+    margin-right: 0.17em;
+  }
+  .wk-fig {
+    font-size: 0.5625rem;
+  }
+  .wk-fig figcaption {
+    top: calc(100% + 0.375rem);
+    overflow-wrap: anywhere;
+  }
+
+  /* ───── 6 · Subscribe ───── */
+  .s6__media {
+    margin-bottom: 1.75rem;
+  }
+  .s6__zoom img {
+    width: 93vw;
+  }
+  .s6__note {
+    margin-top: 2rem;
+  }
+}
+
+/* Landscape phones and other very short screens: shrink the whole layout with
+   the height (every size is in rem), so the sections still fit on one screen. */
+@media (max-width: 1023px) and (max-height: 600px) {
+  html {
+    font-size: clamp(8px, 100vh / 50, 12px);
+  }
+}

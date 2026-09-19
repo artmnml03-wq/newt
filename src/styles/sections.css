@@ -1,0 +1,460 @@
+/* Sections 2–6 */
+
+/* ───────── 2 · Soundtrack for the day ───────── */
+.s2 {
+  height: var(--sec-h);
+  background: var(--white);
+  color: var(--black);
+}
+/* Taller than the screen: it is held in place and slid up with the scroll
+   (js/soundtrack.js), so the headline is fully visible when the section arrives. */
+.s2__inner {
+  padding: 4.75rem var(--edge) 7.5rem var(--content-x);
+  will-change: transform;
+}
+.sd-title {
+  font-size: var(--display-size);
+  font-weight: 700;
+  line-height: 6.4375rem;
+  letter-spacing: var(--display-spacing);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.sd-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+.sd-row > span {
+  display: block;
+}
+.sd-the {
+  position: relative;
+}
+.sd-date {
+  position: absolute;
+  top: calc(100% + 1.625rem);
+  left: 0.5rem;
+  display: grid;
+  gap: 0.5rem;
+  letter-spacing: 0;
+  line-height: 1.2;
+}
+.sd-date span:first-child {
+  font-size: var(--caption-size);
+}
+.sd-date span:last-child {
+  font-size: var(--body-medium-size);
+}
+.sd-day {
+  display: flex;
+  align-items: flex-start;
+  gap: 3.25rem;
+}
+.sd-arrow {
+  width: 4.125rem;
+  height: 5.25rem;
+  margin-top: 0.375rem;
+  color: var(--red);
+  flex: none;
+}
+.sd-body {
+  display: grid;
+  grid-template-columns: 38.25rem 1fr;
+  column-gap: 5.5rem;
+  align-items: end;
+  margin-top: 6.6875rem;
+}
+.sd-cover {
+  width: 38.25rem;
+  height: 38.375rem;
+  object-fit: cover;
+}
+.sd-copy {
+  display: grid;
+  gap: 1.75rem;
+  padding-bottom: 1.25rem;
+  max-width: 27.9375rem;
+  text-transform: uppercase;
+}
+.explore {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: max-content;
+  font-size: var(--caption-size);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.explore svg {
+  width: 1.375rem;
+  height: 0.875rem;
+  color: var(--red);
+  transition: transform 0.25s ease;
+}
+.explore:hover svg {
+  transform: translateX(0.25rem);
+}
+.explore:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 0.25rem;
+}
+/* Hovering "Explore" makes it flicker, like the menu items. */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .explore:hover {
+    animation: var(--blink-link);
+  }
+}
+
+/* ───────── 3 · Previous albums ───────── */
+.s3 {
+  height: var(--sec-h);
+  background: var(--black);
+  color: var(--white);
+  /* the row can be dragged sideways; vertical touch scrolling stays native */
+  cursor: grab;
+  touch-action: pan-y;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.s3.is-dragging {
+  cursor: grabbing;
+}
+.s3 img {
+  -webkit-user-drag: none;
+  pointer-events: none;
+}
+.s3__title {
+  position: absolute;
+  top: 1.1875rem;
+  left: var(--content-x);
+  margin-left: -0.1875rem;
+}
+.cards {
+  position: absolute;
+  top: 19.75rem;
+  left: var(--content-x);
+  display: flex;
+  gap: 2.25rem;
+  width: max-content;
+  will-change: transform;
+}
+.card {
+  flex: none;
+  width: 19.375rem;
+}
+.card__img {
+  position: relative;
+  width: 19.375rem;
+  height: 19.125rem;
+}
+.card__img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Corner marks around the cover */
+.card__img::after {
+  content: "";
+  position: absolute;
+  inset: -0.5rem;
+  pointer-events: none;
+  --c: var(--white);
+  background:
+    linear-gradient(var(--c), var(--c)) 0 0 / 0.875rem 1px,
+    linear-gradient(var(--c), var(--c)) 0 0 / 1px 0.875rem,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 0.875rem 1px,
+    linear-gradient(var(--c), var(--c)) 100% 0 / 1px 0.875rem,
+    linear-gradient(var(--c), var(--c)) 0 100% / 0.875rem 1px,
+    linear-gradient(var(--c), var(--c)) 0 100% / 1px 0.875rem,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 0.875rem 1px,
+    linear-gradient(var(--c), var(--c)) 100% 100% / 1px 0.875rem;
+  background-repeat: no-repeat;
+}
+/* Hovering a card makes its corner marks flicker (like the cards on blimp.gr).
+   The flicker is skipped where there is no hover (touch) and for people who
+   asked for reduced motion; they get a plain highlight instead. */
+@media (hover: hover) {
+  .card:hover .card__img::after {
+    animation: blink 0.1s linear infinite;
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: reduce) {
+  .card:hover .card__img::after {
+    animation: none;
+    --c: var(--red);
+  }
+}
+.card__artist {
+  margin: 1.75rem 0 0;
+  font-size: var(--caption-size);
+  font-weight: 400;
+  line-height: 0.875rem;
+  text-transform: uppercase;
+}
+.card__title {
+  margin: 0.75rem 0 0;
+  font-size: var(--body-medium-size);
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+/* ───────── 4 · Video ───────── */
+.s4 {
+  height: var(--sec-h);
+  background: #000;
+  color: var(--white);
+}
+.s4__video {
+  position: absolute;
+  inset: 0;
+}
+.s4__video video,
+.s4__video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Dimming over the video so the white text stays readable: an even layer plus
+   extra darkness towards the left and the bottom, where the text sits.
+   --video-dim is the strength of the even layer (0 – 1). */
+.s4__video {
+  --video-dim: 0.2;
+}
+.s4__video::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgb(0 0 0 / 0.3) 0%, rgb(0 0 0 / 0) 65%),
+    linear-gradient(0deg, rgb(0 0 0 / 0.3) 0%, rgb(0 0 0 / 0) 55%),
+    rgb(0 0 0 / var(--video-dim));
+}
+.s4__text {
+  position: absolute;
+  top: 24.4375rem;
+  left: var(--content-x);
+  max-width: 43.125rem;
+  margin-left: 1px;
+}
+.s4__text .h2 {
+  letter-spacing: -0.03em;
+}
+.s4__lead {
+  margin-top: 2.5rem;
+}
+.w {
+  display: inline-block;
+  white-space: pre;
+}
+
+/* ───────── 5 · Albums of the week ───────── */
+.s5 {
+  /* size of the inline covers and the gap after them (also read by js/week.js) */
+  --wk-fig-w: 11.8125rem;
+  --wk-fig-h: 8.625rem;
+  --wk-gap: 2.125rem;
+  height: var(--sec-h);
+  background: var(--white);
+  color: var(--black);
+  padding: 8.4375rem var(--edge) 0 var(--content-x);
+}
+.wk-row {
+  display: flex;
+  align-items: flex-start;
+  height: 12rem;
+  font-size: var(--week-size);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: var(--display-spacing);
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.wk-word {
+  flex: none;
+  margin-right: 0.28em;
+}
+.wk-fig {
+  position: relative;
+  flex: none;
+  width: var(--wk-fig-w);
+  height: var(--wk-fig-h);
+  /* aligns the cover with the cap height of the headline */
+  margin: calc(var(--week-size) * 0.26) var(--wk-gap) 0 0;
+  font-size: var(--body-xs-size);
+  letter-spacing: 0;
+  line-height: 1.15;
+  text-transform: none;
+}
+.wk-fig__img {
+  width: var(--wk-fig-w);
+  height: var(--wk-fig-h);
+  max-width: none;
+  border-radius: var(--radius);
+  object-fit: cover;
+}
+.wk-fig figcaption {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  left: 0;
+  width: var(--wk-fig-w);
+  white-space: normal;
+}
+.wk-fig figcaption b {
+  display: block;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.wk-clip {
+  position: absolute;
+  inset: 0 0 auto 0;
+  overflow: hidden;
+  height: var(--wk-fig-h);
+  border-radius: var(--radius);
+}
+
+/* ───────── 6 · Subscribe ───────── */
+.s6 {
+  height: var(--sec-h);
+  background: var(--surface);
+  color: var(--black);
+}
+.s6__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+}
+.s6__zoom {
+  position: absolute;
+  inset: 0;
+  transform-origin: 100% 0; /* grows out of the top-right corner */
+}
+/* The balloon is exported at its final size (666 × 646 on the 1440 mockup):
+   it sits in the top-right corner and scales with the page. Its background is
+   a hair off the section colour at the edges, so the left and bottom edges are
+   feathered. */
+.s6__zoom img {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 41.625rem;
+  height: auto;
+  max-width: none;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 6%), linear-gradient(180deg, #000 95%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(90deg, transparent 0, #000 6%), linear-gradient(180deg, #000 95%, transparent 100%);
+  mask-composite: intersect;
+}
+.s6__col {
+  position: absolute;
+  left: var(--text-x);
+  bottom: 1.875rem;
+  width: 19.4375rem;
+}
+.s6__title {
+  width: max-content;
+  margin: 0 0 1.25rem -0.1875rem;
+}
+.s6__text {
+  max-width: 18.75rem;
+  margin-bottom: 1.8125rem;
+}
+.form {
+  display: grid;
+  gap: 0.625rem;
+}
+.field {
+  width: 100%;
+  height: 2.75rem;
+  padding: 0 0.75rem;
+  border: 0;
+  border-radius: var(--radius);
+  background: var(--white);
+  color: var(--black);
+  font: inherit;
+  font-size: var(--body-s-size);
+  outline: 0;
+}
+.field::placeholder {
+  color: var(--graphite);
+  opacity: 1;
+}
+.field:focus-visible {
+  box-shadow: 0 0 0 0.125rem var(--black);
+}
+.btn {
+  height: 2.75rem;
+  border-radius: var(--radius);
+  background: var(--btn-bg, var(--black));
+  color: var(--white);
+  font-size: var(--caption-size);
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: opacity 0.2s ease, color 0.2s ease;
+}
+.btn:hover {
+  opacity: 0.85;
+}
+.form__error {
+  margin: 0;
+  min-height: 0;
+  color: var(--red);
+  font-size: var(--body-s-size);
+  line-height: 1;
+}
+.form__error:empty {
+  display: none;
+}
+.s6.is-error .btn {
+  background: var(--black);
+  color: var(--graphite);
+}
+.s6__thanks {
+  display: none;
+  width: max-content;
+  margin-left: -0.1875rem;
+  white-space: nowrap;
+}
+.s6.is-success .s6__title,
+.s6.is-success .s6__text,
+.s6.is-success .form {
+  display: none;
+}
+.s6.is-success .s6__thanks {
+  display: block;
+}
+.chat {
+  position: absolute;
+  left: var(--edge);
+  bottom: 1.875rem;
+  width: var(--nav-w);
+  padding: 1.3125rem 1.25rem 1.375rem;
+  border-radius: var(--radius);
+  background: var(--white);
+}
+.chat__label {
+  display: block;
+  margin-bottom: 0.625rem;
+  color: var(--red);
+  font-size: var(--body-xs-size);
+  font-weight: 700;
+  text-transform: uppercase;
+}
+.chat__mail {
+  display: block;
+  font-size: var(--caption-size);
+  font-weight: 700;
+  line-height: 1rem;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+.s6__note {
+  position: absolute;
+  right: var(--edge);
+  bottom: 1.875rem;
+  max-width: 18.75rem;
+  text-align: right;
+}

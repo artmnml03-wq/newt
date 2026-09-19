@@ -1,0 +1,75 @@
+/* Welcome pop-up (appears 10 s after load) */
+
+.popup {
+  position: fixed;
+  inset: 0;
+  z-index: 80; /* above the menu (60), below the ticker (100) */
+  display: grid;
+  grid-template-columns: minmax(0, 1fr); /* lets the card shrink on narrow screens */
+  place-items: center;
+  padding: 1.5rem;
+  background: rgb(0 0 0 / 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+.popup.is-open {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.35s ease;
+}
+.popup__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: min(28.875rem, 100%);
+  aspect-ratio: 462 / 513;
+  padding: 0 1.25rem 1.25rem;
+  background: var(--light-gray) url("/img/popup/bg.png") center / cover no-repeat;
+  color: var(--white);
+  text-align: center;
+  transform: translateY(1rem);
+  transition: transform 0.35s ease;
+}
+.popup.is-open .popup__card {
+  transform: none;
+}
+.popup__close {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--black);
+}
+.popup__close svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.popup__title {
+  margin-bottom: 1.25rem;
+  font-size: var(--body-medium-size);
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+.popup__text {
+  margin-bottom: 1.25rem;
+  font-size: var(--body-s-size);
+  line-height: 1;
+}
+.popup__cta {
+  display: grid;
+  place-items: center;
+  height: 3rem;
+  background: var(--black);
+  color: var(--white);
+  font-size: var(--body-s-size);
+  text-transform: uppercase;
+  transition: opacity 0.2s ease;
+}
+.popup__cta:hover {
+  opacity: 0.85;
+}
